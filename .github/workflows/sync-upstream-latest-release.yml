@@ -50,7 +50,7 @@ jobs:
           git -C "${tmp}/repo" remote add origin "https://github.com/${TARGET_REPO}.git"
 
           if ! git -C "${tmp}/repo" ls-remote --exit-code --refs origin "refs/tags/${tag}" >/dev/null 2>&1; then
-            git -C "${tmp}/repo" fetch --quiet upstream "refs/tags/${tag}"
+            git -C "${tmp}/repo" fetch --quiet upstream "refs/tags/${tag}:refs/tags/${tag}"
             git -C "${tmp}/repo" push --quiet origin "refs/tags/${tag}:refs/tags/${tag}"
             echo "Pushed tag ${tag}."
           else
